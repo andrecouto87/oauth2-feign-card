@@ -1,4 +1,4 @@
-package br.com.mastertech.couto.cartao.client;
+package br.com.mastertech.couto.cartao.decoder;
 
 import br.com.mastertech.couto.cartao.exception.CustomerNotFoundException;
 import feign.Response;
