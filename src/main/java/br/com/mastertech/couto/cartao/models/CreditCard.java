@@ -1,8 +1,5 @@
 package br.com.mastertech.couto.cartao.models;
 
-import br.com.mastertech.couto.cartao.client.Customer;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 
 @Entity

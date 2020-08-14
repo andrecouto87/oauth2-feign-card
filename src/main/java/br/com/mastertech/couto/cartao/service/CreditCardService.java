@@ -3,10 +3,8 @@ package br.com.mastertech.couto.cartao.service;
 import br.com.mastertech.couto.cartao.client.Customer;
 import br.com.mastertech.couto.cartao.client.CustomerClient;
 import br.com.mastertech.couto.cartao.exception.CreditCardNotFoundException;
-import br.com.mastertech.couto.cartao.exception.CustomerNotFoundException;
 import br.com.mastertech.couto.cartao.models.CreditCard;
 import br.com.mastertech.couto.cartao.repository.CreditCardRepository;
-import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +20,8 @@ public class CreditCardService {
     private CreditCardRepository creditCardRepository;
 
     public CreditCard create(CreditCard creditCard) {
-        try {
-            Customer customer = customerService.getCustomerById(creditCard.getCustomerId());
-            creditCard.setCustomerId(customer.getId());
-        } catch (FeignException.NotFound ex) {
-            throw new CustomerNotFoundException();
-        }
+        Customer customer = customerService.getCustomerById(creditCard.getCustomerId());
+        creditCard.setCustomerId(customer.getId());
 
         creditCard.setActive(false);
 
