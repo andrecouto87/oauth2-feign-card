@@ -25,6 +25,13 @@ public class CreditCardController {
         return creditCardMapper.toCreateCreditCardResponse(creditCard);
     }
 
+    @PostMapping("/semlogin/")
+    public CreateCreditCardResponse createSemLogin(@RequestBody @Valid CreateCreditCardRequest createCreditCardRequest) {
+        CreditCard creditCard = creditCardMapper.toCreditCard(createCreditCardRequest);
+        creditCard = creditCardService.create(creditCard);
+        return creditCardMapper.toCreateCreditCardResponse(creditCard);
+    }
+
     @GetMapping("/{id}")
     public GetCreditCardResponse getById(@PathVariable Long id) {
         CreditCard creditCard = creditCardService.getById(id);
